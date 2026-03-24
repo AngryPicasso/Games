@@ -1,17 +1,13 @@
 import streamlit as st
-import base64
 
 st.set_page_config(page_title="The 13th Game 🎉", layout="centered")
-
-# ---- Load Photo from Secrets ----
-photo_data = base64.b64decode(st.secrets["PHOTO"])
 
 # ---- Title ----
 st.title("🎉 The 13th Game 🎉")
 st.subheader("Happy 13th Birthday, Malu 💛")
 
-# ---- Show Photo ----
-st.image(photo_data, use_container_width=True)
+# ---- Photo ----
+st.image("photo.jpeg", use_container_width=True)
 
 # ---- Background Music ----
 try:
