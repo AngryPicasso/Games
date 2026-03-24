@@ -3,7 +3,7 @@ import base64
 
 st.set_page_config(page_title="The 13th Game 🎉", layout="centered")
 
-# ---- Helper: Show Photo (base64) ----
+# ---- Helper: Show Photo ----
 def show_image():
     try:
         with open("photo.jpeg", "rb") as f:
@@ -42,20 +42,11 @@ def play_music():
 st.title("🎉 The 13th Game 🎉")
 st.subheader("Happy 13th Birthday, Malu 💛")
 
-# ---- Photo ----
-show_image()
-
-# ---- Message ----
+# ---- Intro ----
 st.markdown("""
-### ✨ A Message for You
+You’ve been given a clue.
 
-You’re officially a teenager now—and this is where things start getting interesting.
-
-There will be new experiences, new challenges, and moments that shape who you become.
-
-Stay curious. Stay confident. And enjoy every step of the journey.
-
-Because just like in *The Inheritance Games*… every clue leads to something bigger 😉
+Solve it… and something special will be revealed 🔐
 """)
 
 # ---- Puzzle ----
@@ -64,27 +55,32 @@ st.code("13 – 1 – 12 – 21")
 
 answer = st.text_input("Enter your answer:")
 
+# ---- SUCCESS FLOW ----
 if answer.lower() == "malu":
     st.success("Correct 😄")
 
     # 🎵 Play music
     play_music()
 
-    # 🎉 Effects
+    # 🎉 Animation
     st.balloons()
 
-    # 🔐 Reveal
+    # 🖼️ Reveal photo
+    show_image()
+
+    # 💬 Message
     st.markdown("""
-    ## 🔓 You solved the first clue
+    ## 🔓 You unlocked it
 
-    And just like that… the game begins.
+    Happy 13th Birthday, Malu 💛
 
-    Every mystery has a starting point.  
-    Every story has a first page.
+    This is just the beginning of something amazing.
 
-    📖 **Start at the beginning — Chapter 1**
+    Keep smiling, keep dreaming, and enjoy every moment of your teenage years.
 
-    Good luck, Malu 😉
+    📖 And now… your story begins.
+
+    Start with Chapter 1 😉
     """)
 
 else:
@@ -92,4 +88,4 @@ else:
 
 # ---- Footer ----
 st.markdown("---")
-st.write("You solved the first clue. The real game begins now. 🔐✨")
+st.write("The game has just begun 🔐✨")
