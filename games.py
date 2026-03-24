@@ -1,6 +1,34 @@
 import streamlit as st
 import base64
+import os
 
+st.set_page_config(page_title="The 13th Game 🎉", layout="centered")
+
+# ---- Debug (remove later if you want) ----
+st.write("Files in directory:", os.listdir())
+
+# ---- Title ----
+st.title("🎉 The 13th Game 🎉")
+st.subheader("Happy 13th Birthday, Malu 💛")
+
+# ---- Photo (IMPORTANT PART) ----
+if os.path.exists("photo.jpeg"):
+    st.image("photo.jpeg", use_container_width=True)
+else:
+    st.error("photo.jpeg not found ❌")
+
+# ---- Message ----
+st.markdown("""
+### ✨ A Message for You
+
+You’re officially a teenager now—and this is where things start getting interesting.
+
+Stay curious. Stay confident. And enjoy every moment.
+
+Because just like in *The Inheritance Games*… every clue leads to something bigger 😉
+""")
+
+# ---- Puzzle ----
 st.markdown("### 🧩 Your First Clue")
 st.code("13 – 1 – 12 – 21")
 
@@ -20,25 +48,21 @@ def play_music():
 
 if answer.lower() == "malu":
     st.success("Correct 😄")
-    
-    # 🎵 Play music on success
     play_music()
-    
-    # 🎉 Effects
     st.balloons()
-    
-    # 🔐 Reveal message
+
     st.markdown("""
     ## 🔓 You solved the first clue
 
-    And just like that… the game begins.
+    The game begins now.
 
-    Every mystery has a starting point.  
-    Every story has a first page.
-
-    📖 **Start at the beginning — Chapter 1**
+    📖 Start at Chapter 1
 
     Good luck, Malu 😉
     """)
 else:
     st.info("Hint: A = 1 😉")
+
+# ---- Footer ----
+st.markdown("---")
+st.write("You solved the first clue. The real game begins now. 🔐✨")
