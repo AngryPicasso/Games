@@ -1,49 +1,43 @@
-import streamlit as st
+import base64
 
-st.set_page_config(page_title="The 13th Game 🎉", layout="centered")
-
-# ---- Title ----
-st.title("🎉 The 13th Game 🎉")
-st.subheader("Happy 13th Birthday, Malu 💛")
-
-# ---- Photo ----
-st.image("photo.jpeg", use_container_width=True)
-
-# ---- Background Music ----
-try:
-    with open("music.mp3", "rb") as audio_file:
-        audio_bytes = audio_file.read()
-        st.audio(audio_bytes, format="audio/mp3")
-except:
-    st.warning("Music file not found 🎵")
-
-# ---- Message ----
-st.markdown("""
-### ✨ A Message for You
-
-You’re officially a teenager now—and this is where things start getting interesting.
-
-There will be new experiences, new challenges, and a lot of moments that shape who you become.  
-But don’t overthink it—just enjoy it.
-
-Stay curious. Stay confident. And always be yourself.
-
-Because just like in *The Inheritance Games*… every clue leads to something bigger 😉
-""")
-
-# ---- Puzzle ----
 st.markdown("### 🧩 Your First Clue")
 st.code("13 – 1 – 12 – 21")
 
 answer = st.text_input("Enter your answer:")
 
+def play_music():
+    with open("music.mp3", "rb") as f:
+        data = f.read()
+        b64 = base64.b64encode(data).decode()
+
+    audio_html = f"""
+    <audio autoplay>
+    <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
+    </audio>
+    """
+    st.markdown(audio_html, unsafe_allow_html=True)
+
 if answer.lower() == "malu":
     st.success("Correct 😄")
-    st.write("📖 Start at the beginning... Chapter 1")
+    
+    # 🎵 Play music on success
+    play_music()
+    
+    # 🎉 Effects
     st.balloons()
+    
+    # 🔐 Reveal message
+    st.markdown("""
+    ## 🔓 You solved the first clue
+
+    And just like that… the game begins.
+
+    Every mystery has a starting point.  
+    Every story has a first page.
+
+    📖 **Start at the beginning — Chapter 1**
+
+    Good luck, Malu 😉
+    """)
 else:
     st.info("Hint: A = 1 😉")
-
-# ---- Footer ----
-st.markdown("---")
-st.write("You solved the first clue. The real game begins now. 🔐✨")
