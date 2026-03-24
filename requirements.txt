@@ -1,4 +1,1 @@
-birthday_app.py
-requirements.txt
-photo.jpg
-music.mp3
+streamlit
