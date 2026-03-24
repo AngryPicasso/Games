@@ -49,6 +49,11 @@ You’ve been given a clue.
 Solve it… and something special will be revealed 🔐
 """)
 
+st.markdown("""
+You already found where the story begins…
+
+Now find who it’s about 🔐
+""")
 # ---- Puzzle ----
 st.markdown("### 🧩 Your First Clue")
 st.code("13 – 1 – 12 – 21")
