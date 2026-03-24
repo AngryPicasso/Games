@@ -1,18 +1,25 @@
 import streamlit as st
+import base64
 
 st.set_page_config(page_title="The 13th Game 🎉", layout="centered")
+
+# ---- Load Photo from Secrets ----
+photo_data = base64.b64decode(st.secrets["PHOTO"])
 
 # ---- Title ----
 st.title("🎉 The 13th Game 🎉")
 st.subheader("Happy 13th Birthday, Malu 💛")
 
-# ---- Photo ----
-st.image("photo.jpg", use_container_width=True)
+# ---- Show Photo ----
+st.image(photo_data, use_container_width=True)
 
 # ---- Background Music ----
-with open("music.mp3", "rb") as audio_file:
-    audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format="audio/mp3")
+try:
+    with open("music.mp3", "rb") as audio_file:
+        audio_bytes = audio_file.read()
+        st.audio(audio_bytes, format="audio/mp3")
+except:
+    st.warning("Music file not found 🎵")
 
 # ---- Message ----
 st.markdown("""
@@ -20,7 +27,7 @@ st.markdown("""
 
 You’re officially a teenager now—and this is where things start getting interesting.
 
-There will be new experiences, new challenges, and a lot of moments that shape who you become.
+There will be new experiences, new challenges, and a lot of moments that shape who you become.  
 But don’t overthink it—just enjoy it.
 
 Stay curious. Stay confident. And always be yourself.
@@ -43,4 +50,4 @@ else:
 
 # ---- Footer ----
 st.markdown("---")
-st.write("Made with 💛 just for you")
+st.write("You solved the first clue. The real game begins now. 🔐✨")
