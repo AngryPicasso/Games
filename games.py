@@ -19,7 +19,7 @@ def show_image():
         st.markdown(img_html, unsafe_allow_html=True)
 
     except:
-        st.error("photo.jpeg not found ❌")
+        st.error("Image not found ❌")
 
 # ---- Helper: Play Music ----
 def play_music():
@@ -36,24 +36,27 @@ def play_music():
         st.markdown(audio_html, unsafe_allow_html=True)
 
     except:
-        st.warning("Music file not found 🎵")
+        pass
 
 # ---- Title ----
-st.title("🎉 The 13th Game 🎉")
-st.subheader("Happy 13th Birthday, Malu 💛")
+st.title("🔐 The 13th Game")
 
-# ---- Intro ----
+# ---- Anonymous Intro ----
 st.markdown("""
-You’ve been given a clue.
+You’ve already taken the first step.
 
-Solve it… and something special will be revealed 🔐
+Most don’t make it this far.
+
+Let’s see if you can solve what comes next.
 """)
 
+# ---- Transition (connects with A clue before link) ----
 st.markdown("""
 You already found where the story begins…
 
-Now find who it’s about 🔐
+Now find who it’s about.
 """)
+
 # ---- Puzzle ----
 st.markdown("### 🧩 Your First Clue")
 st.code("13 – 1 – 12 – 21")
@@ -62,30 +65,43 @@ answer = st.text_input("Enter your answer:")
 
 # ---- SUCCESS FLOW ----
 if answer.lower() == "malu":
-    st.success("Correct 😄")
+    st.success("Access Granted 🔓")
 
-    # 🎵 Play music
+    # 🎵 Music
     play_music()
 
-    # 🎉 Animation
+    # 🎈 Effect
     st.balloons()
 
-    # 🖼️ Reveal photo
+    # 🖼️ Photo reveal
     show_image()
 
-    # 💬 Message
+    # 🎭 Dramatic reveal first
     st.markdown("""
-    ## 🔓 You unlocked it
+    ## You solved it.
 
-    Happy 13th Birthday, Malu 💛
+    Not bad.
 
-    This is just the beginning of something amazing.
+    Every game has a reason.
+    Every clue leads somewhere.
 
-    Keep smiling, keep dreaming, and enjoy every moment of your teenage years.
+    And this one… was always meant for you.
+    """)
 
-    📖 And now… your story begins.
+    # 🎉 Final birthday reveal
+    st.markdown("""
+    ---
 
-    Start with Chapter 1 😉
+    ### 🎉 Happy 13th Birthday, Malu 💛
+
+    This was all for you.
+
+    Welcome to your teenage era—  
+    full of surprises, memories, and moments that matter.
+
+    And just like this game…
+
+    **this is only the beginning.**
     """)
 
 else:
@@ -93,4 +109,4 @@ else:
 
 # ---- Footer ----
 st.markdown("---")
-st.write("The game has just begun 🔐✨")
+st.write("The game has just begun 🔐")
