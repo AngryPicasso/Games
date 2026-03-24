@@ -11,11 +11,19 @@ st.write("Files in directory:", os.listdir())
 st.title("🎉 The 13th Game 🎉")
 st.subheader("Happy 13th Birthday, Malu 💛")
 
-# ---- Photo (IMPORTANT PART) ----
-if os.path.exists("photo.jpeg"):
-    st.image("photo.jpeg", use_container_width=True)
-else:
-    st.error("photo.jpeg not found ❌")
+def show_image():
+    with open("photo.jpeg", "rb") as f:
+        data = f.read()
+        b64 = base64.b64encode(data).decode()
+
+    img_html = f"""
+    <img src="data:image/jpeg;base64,{b64}" 
+    style="width:100%; border-radius:15px;">
+    """
+    st.markdown(img_html, unsafe_allow_html=True)
+
+# Call it
+show_image()
 
 # ---- Message ----
 st.markdown("""
